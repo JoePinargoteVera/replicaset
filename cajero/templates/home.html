@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <title>home</title>
+</head>
+<body>
+    <h1>Bienvenido(a) {{ nombre }}</h1>
+    <p>Cédula: <span id="cedula">{{ cedula }}</span></p>
+    <p>Saldo: <span id="saldo">{{ saldo }}</span></p>
+
+    <form id="formularioIngreso">
+        <input type="number" name="montoIngreso" placeholder="Monto del ingreso">
+        <button type="submit">Realizar Ingreso</button>
+    </form>
+
+    <form id="formularioEgreso">
+        <input type="number" name="montoEgreso" placeholder="Monto del egreso">
+        <button type="submit">Realizar Egreso</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
