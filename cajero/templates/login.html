@@ -21,21 +21,19 @@
         <input type="submit" value="Iniciar Sesión">
     </form>
 
-    <p>¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a></p>
+    <p>¿No tienes una cuenta? <a href="/ingreso">Regístrate aquí</a></p>
 
     <script>
-        // Capturar el formulario
         const loginForm = document.getElementById('loginForm');
 
-        // Escuchar el evento de envío del formulario
         loginForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Evitar el envío del formulario
+            event.preventDefault();
 
-            // Obtener los valores de los inputs
+
             const cedula = document.getElementById('cedula').value;
             const clave = document.getElementById('clave').value;
 
-            // Realizar la petición al servidor para validar el cliente
+
             fetch('/clientes/validar', {
                 method: 'POST',
                 headers: {
@@ -45,22 +43,17 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        // Obtener los datos de la respuesta
+
                         return response.json();
                     } else {
-                        // Mostrar mensaje de error
+
                         alert('Cédula o clave incorrectas');
                         throw new Error('Error en la solicitud');
                     }
                 })
                 .then(data => {
-                    // Redireccionar al usuario al dashboard o página principal con los datos necesarios
-                    const { cedula, nombre, saldo } = data; // Suponiendo que la respuesta contiene nombre y email
-
-                    // Construir la URL de redirección con los datos en la URL
+                    const { cedula, nombre, saldo } = data;
                     const urlRedireccion = `/home?nombre=${nombre}&cedula=${cedula}&saldo=${saldo}`;
-
-                    // Redirigir al usuario a la URL construida
                     window.location.href = urlRedireccion;
                 })
                 .catch(error => {

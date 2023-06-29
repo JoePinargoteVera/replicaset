@@ -26,10 +26,14 @@ def registrar_cliente():
     clave = data.get('clave')
     saldo = data.get('saldo')
 
-    cliente = Cliente(nombre=nombre, cedula=cedula, clave=clave, saldo=saldo)
+    cliente = Cliente(nombre=nombre, cedula=cedula, clave=int(clave), saldo=int(saldo))
     cliente.save()
 
-    return jsonify({'message': 'Cliente registrado correctamente'})
+    return jsonify({
+        'nombre': nombre,
+        'cedula': cedula,
+        'saldo': saldo, 
+        'message': 'Cliente registrado correctamente'})
 
 # Ruta para buscar un cliente por su cédula
 
@@ -144,6 +148,9 @@ def home():
 
     return render_template('home.html', nombre=nombre, cedula=cedula, saldo=saldo)
 
+@app.route('/ingreso', methods=['GET'])
+def ingreso():
+    return render_template('ingreso.html')
 
 if __name__ == '__main__':
     app.run()

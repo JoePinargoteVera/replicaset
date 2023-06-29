@@ -1,0 +1,33 @@
+<!-- registro.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+  <title>Registro de Cliente</title>
+  <script src="{{ url_for('static', filename='js/registro.js') }}"></script>
+</head>
+<body>
+  <h1>Registro de Cliente</h1>
+  <form>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="cedula">Cédula:</label>
+    <input type="text" id="cedula" required>
+
+    <label for="clave">Clave:</label>
+    <input type="password" id="clave" required>
+
+    <label for="saldo">Saldo:</label>
+    <input type="number" id="saldo" required>
+
+    <button type="button" onclick="registrarCliente()">Registrar</button>
+  </form>
+
+  <p>¿ya estas registrado? <a href="/">inicia sesion aquí</a></p>
+  <div id="cliente-info"></div>
+</body>
+</html>
